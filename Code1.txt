@@ -1,0 +1,246 @@
+
+
+import java.util.regex.Pattern;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class ECSDigital {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+
+@SuppressWarnings("deprecation")
+@Before
+  public void setUp() throws Exception {
+	  System.setProperty("webdriver.gecko.driver", "C:\\Users\\user\\Downloads\\geckodriver-v0.21.0-win64\\geckodriver.exe");
+	  DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability("marionette", true);
+		driver = new FirefoxDriver(capabilities);
+		driver.get("https://www.katalon.com/");
+	  
+		   driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		  }
+
+		@Test
+		  public void testECSDigital() throws Exception {
+		    driver.get("http://localhost:3000/");
+		    driver.findElement(By.xpath("//button[@type='button']")).click();
+		    // Row 1
+		    String [] Row_1 = new String [9];
+		    int [] Row_i = new int [9];
+		    List <WebElement> First = driver.findElements(By.xpath("//section[@id='challenge']/div/div/div/div/div[2]/table/tbody/tr[1]/td"));
+		    String Row1 = null;
+		    for (int i=0; i<First.size(); i++){
+		    Row1 = First.get(i).getText();
+		    System.out.println("Row1");
+		    Row_1[i] = Row1;
+		    try
+		    {
+		      Row_i[i] = Integer.parseInt(Row_1[i].trim());
+		      System.out.println(Row_i[i]);
+		    }
+		    catch (NumberFormatException nfe)
+		    {
+		      System.out.println("NumberFormatException: " + nfe.getMessage());
+		    }
+		    }
+		    
+		 // Row 2
+		    String [] Row_2 = new String [9];
+		    List <WebElement> Second = driver.findElements(By.xpath("//section[@id='challenge']/div/div/div/div/div[2]/table/tbody/tr[2]/td"));
+		    String Row2 = null;
+		    int [] Row_ii = new int [9];
+		    for (int i=0; i<Second.size(); i++){
+		    Row2 = Second.get(i).getText();
+		    System.out.println("Row2");
+		    Row_2[i] = Row2;
+		    try
+		    {
+		      Row_ii[i] = Integer.parseInt(Row_2[i].trim());
+		      System.out.println(Row_ii[i]);
+		    }
+		    catch (NumberFormatException nfe)
+		    {
+		      System.out.println("NumberFormatException: " + nfe.getMessage());
+		    }
+		    }
+		    
+		 // Row 3
+		    String [] Row_3 = new String [9];
+		    List <WebElement> Third = driver.findElements(By.xpath("//section[@id='challenge']/div/div/div/div/div[2]/table/tbody/tr[3]/td"));
+		    String Row3 = null;
+		    int [] Row_iii = new int [9];
+		    for (int i=0; i<Third.size(); i++){
+		    Row3 = Third.get(i).getText();
+		    System.out.println("Row3");
+		    Row_3[i] = Row3;
+		    try
+		    {
+		      Row_iii[i] = Integer.parseInt(Row_3[i].trim());
+		      System.out.println(Row_iii[i]);
+		    }
+		    catch (NumberFormatException nfe)
+		    {
+		      System.out.println("NumberFormatException: " + nfe.getMessage());
+		    }
+		    }
+		    
+		    //Solve Row 1
+		    int end = Row_i.length - 1;
+	        int start = 0;
+	        int Leftsum = Row_i[start];
+	        int Rightsum = Row_i[end];
+	        while (true) {
+	        	if(start<end){
+		            if (Leftsum > Rightsum) {
+		                Rightsum = Rightsum +Row_i[--end];
+		            } else if (Rightsum > Leftsum){
+		                Leftsum = Leftsum + Row_i[++start];
+		            }
+		            else if (Leftsum == Rightsum){
+		            	System.out.println("soln1");
+		    	        System.out.println(start+1);
+		    	        System.out.println(Rightsum);
+		    	        System.out.println(Leftsum);
+		    	        break;
+		            }
+	        	}
+	            else {
+	            	System.out.println("soln 1");
+                	System.out.println("null");
+                	break;
+	            }
+	        }
+	        WebElement answerbox1 = driver.findElement(By.xpath("//input[@data-test-id='submit-1']"));
+	        answerbox1.click();
+	        answerbox1.clear();
+	        answerbox1.sendKeys(String.valueOf(start+1));
+	        answerbox1.sendKeys(Keys.ENTER);
+	      
+
+	        
+	      //Solve Row 2
+	        end = Row_ii.length - 1;
+	        start = 0;
+	        Leftsum = Row_ii[start];
+	        Rightsum = Row_ii[end];
+	        while (true) {
+	        	if(start<end){
+		            if (Leftsum > Rightsum) {
+		                Rightsum = Rightsum +Row_ii[--end];
+		            } else if (Rightsum > Leftsum){
+		                Leftsum = Leftsum + Row_ii[++start];
+		            }
+		            else if (Leftsum == Rightsum){
+		            	System.out.println("soln2");
+		    	        System.out.println(start+1);
+		    	        System.out.println(Rightsum);
+		    	        System.out.println(Leftsum);
+		    	        break;
+		            }
+	        	}
+	            else {
+	            	System.out.println("soln 2");
+                	System.out.println("null");
+                	break;
+	            }
+	        }
+	        
+	        WebElement answerbox2 = driver.findElement(By.xpath("//input[@data-test-id='submit-2']"));
+	        answerbox2.click();
+	        answerbox2.clear();
+	        answerbox2.sendKeys(String.valueOf(start+1));
+	        answerbox2.sendKeys(Keys.ENTER);
+	        
+	      //Solve Row 3
+	        end = Row_iii.length - 1;
+	        start = 0;
+	        Leftsum = Row_iii[start];
+	        Rightsum = Row_iii[end];
+	        while (true) {
+	        	if(start<end){
+		            if (Leftsum > Rightsum) {
+		                Rightsum = Rightsum +Row_iii[--end];
+		            } else if (Rightsum > Leftsum){
+		                Leftsum = Leftsum + Row_iii[++start];
+		            }
+		            else if (Leftsum == Rightsum){
+		            	System.out.println("soln3");
+		    	        System.out.println(start+1);
+		    	        System.out.println(Rightsum);
+		    	        System.out.println(Leftsum);
+		    	        break;
+		            }
+	        	}
+	            else{
+	            	System.out.println("soln 3");
+                	System.out.println("null");
+                	break;
+	            }
+	        }
+	        WebElement answerbox3 = driver.findElement(By.xpath("//input[@data-test-id='submit-3']"));
+	        answerbox3.click();
+	        answerbox3.clear();
+	        answerbox3.sendKeys(String.valueOf(start+1));
+	        answerbox3.sendKeys(Keys.ENTER);
+	        
+	        WebElement answerbox4 = driver.findElement(By.xpath("//input[@data-test-id='submit-4']"));
+	        answerbox4.click();
+	        answerbox4.clear();
+	        answerbox4.sendKeys("Emmanuel Pius-Ogiji");
+	        answerbox4.sendKeys(Keys.ENTER);
+		  }
+		  
+
+//		  @After
+//		  public void tearDown() throws Exception {
+//		    driver.quit();
+//		    String verificationErrorString = verificationErrors.toString();
+//		    if (!"".equals(verificationErrorString)) {
+//		      fail(verificationErrorString);
+//		    }
+//		  }
+//
+//		  private boolean isElementPresent(By by) {
+//		    try {
+//		      driver.findElement(by);
+//		      return true;
+//		    } catch (NoSuchElementException e) {
+//		      return false;
+//		    }
+//		  }
+//
+//		  private boolean isAlertPresent() {
+//		    try {
+//		      driver.switchTo().alert();
+//		      return true;
+//		    } catch (NoAlertPresentException e) {
+//		      return false;
+//		    }
+//		  }
+//
+//		  private String closeAlertAndGetItsText() {
+//		    try {
+//		      Alert alert = driver.switchTo().alert();
+//		      String alertText = alert.getText();
+//		      if (acceptNextAlert) {
+//		        alert.accept();
+//		      } else {
+//		        alert.dismiss();
+//		      }
+//		      return alertText;
+//		    } finally {
+//		      acceptNextAlert = true;
+//		    }
+		 // }
+		}

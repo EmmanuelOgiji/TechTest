@@ -1,0 +1,32 @@
+{
+  "id": "f1e6a14a-3bf4-4c46-a697-96cbf634025f",
+  "name": "Untitled Project",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "82c8b8b6-64b9-40b4-affe-0d25f7b1c49f",
+    "name": "Untitled",
+    "commands": [{
+      "id": "965a080b-8969-4c50-8568-a5bb7742789b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "value": ""
+    }, {
+      "id": "867157fb-a733-4ce2-8d96-db203a59d885",
+      "comment": "",
+      "command": "clickAt",
+      "target": "css=button[type=\"button\"]",
+      "value": "92,15"
+    }]
+  }],
+  "suites": [{
+    "id": "92bcef3f-8ca2-4064-98df-9f93c546ef77",
+    "name": "Default Suite",
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["82c8b8b6-64b9-40b4-affe-0d25f7b1c49f"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": [],
+  "version": "1.0"
+}
